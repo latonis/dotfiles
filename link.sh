@@ -18,4 +18,10 @@ if [ ! -d ~/.config ]; then
     mkdir ~/.config
 fi
 
+for dir in ./config/*/; do
+    name=$(basename $dir)
+    echo "Linking $name"
+    ln -s "$(pwd)/$dir" ~/.config/$name
+done
+
 echo "[+] All files linked"
