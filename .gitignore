@@ -6,3 +6,9 @@
 # zellij config files
 *.kdl.bak
 *.kdl.bak.*
+
+# Ignore all hidden files and folders recursively
+.*
+# Exception: Do not ignore the .gitignore file itself
+!.gitignore
+
