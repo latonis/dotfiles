@@ -3,25 +3,16 @@
 # linking .zshrc time
 echo "[+] Linking .zshrc"
 
-ln -s "$(pwd)/.zshrc" ~/.zshrc
-rc=$?
+ln -sf "$(pwd)/.zshrc" ~/.zshrc
 
-if [ $rc -eq 0 ]; then
-    echo "[+] .zshrc linked successfully"
-else
-    echo "[-] Failed to link .zshrc"
-fi
-
-# check if .config folder exists, if it doesn't congrats new environment!!
-if [ ! -d ~/.config ]; then
-    echo "[+] Creating .config folder"
-    mkdir ~/.config
-fi
+echo "[+] Creating .config folder"
+mkdir -p ~/.config
 
 for dir in ./config/*/; do
-    name=$(basename $dir)
-    echo "Linking $name"
-    ln -s "$(pwd)/$dir" ~/.config/$name
+    dir_path=$(realpath $dir)
+    name=$(basename $dir_path)
+    echo "[+] Linking $name"
+    ln -sfn "$dir_path" ~/.config/$name
 done
 
 echo "[+] All files linked"
