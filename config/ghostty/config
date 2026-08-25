@@ -1,0 +1,5 @@
+macos-titlebar-proxy-icon = hidden
+title = " "
+font-family="BerkeleyMono Nerd Font Mono"
+theme = dark:Aizen Dark,light:Aizen Light
+clipboard-paste-protection = false
