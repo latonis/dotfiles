@@ -18,6 +18,14 @@
  ;; If there is more than one, they won't work right.
  )
 
+(use-package company
+  :ensure t
+  :init
+  (add-hook 'after-init-hook 'global-company-mode)
+  :config
+  (setq company-minimum-prefix-length 1
+        company-idle-delay 0.0))
+
 (use-package elixir-mode
   :ensure t)
 
@@ -27,4 +35,6 @@
   :hook (elixir-mode . lsp)
   :init
   )
+(setq lsp-completion-provider :capf)
+(setq lsp-enable-on-type-formatting t)
 (use-package lsp-ui)
