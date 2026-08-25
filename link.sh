@@ -16,3 +16,7 @@ for dir in ./config/*/; do
 done
 
 echo "[+] All files linked"
+
+git config --global core.excludesfile ~/.config/git/ignore
+
+echo "[+] Added global gitignore file"
