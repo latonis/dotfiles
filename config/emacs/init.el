@@ -35,6 +35,19 @@
   :hook (elixir-mode . lsp)
   :init
   )
+
+(setq catppuccin-flavor 'latte)   ; 'latte, 'frappe, 'macchiato, or 'mocha
+
+
+(use-package catppuccin-theme
+  :ensure t
+  :config
+  ;; Force light mode before loading
+  (setq frame-background-mode 'light)
+  (set-terminal-parameter nil 'background-mode 'light)
+  ;; Load the theme (this is the light "Latte" variant)
+  (load-theme 'catppuccin t))
+
 (setq lsp-completion-provider :capf)
 (setq lsp-enable-on-type-formatting t)
 (use-package lsp-ui)
