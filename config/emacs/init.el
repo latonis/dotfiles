@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (require 'package)
 
 (add-hook 'window-setup-hook #'global-display-line-numbers-mode)
@@ -10,7 +11,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
+ '(package-selected-packages '(catppuccin-theme company elixir-mode lsp-mode lsp-ui)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -50,4 +51,7 @@
 
 (setq lsp-completion-provider :capf)
 (setq lsp-enable-on-type-formatting t)
-(use-package lsp-ui)
+
+(use-package lsp-ui
+  :ensure t
+  :defer t)
