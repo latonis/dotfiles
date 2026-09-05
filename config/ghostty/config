@@ -1,5 +1,5 @@
 macos-titlebar-proxy-icon = hidden
 title = " "
 font-family="BerkeleyMono Nerd Font Mono"
-theme = dark:Catppuccin,light:Catppuccin Latte
+theme = dark:Catppuccin Frappe,light:Catppuccin Latte
 clipboard-paste-protection = false
