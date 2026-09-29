@@ -22,6 +22,14 @@
  ;; If there is more than one, they won't work right.
  )
 
+
+(setq auto-save-file-name-transforms
+      `((".*" ,(expand-file-name "auto-save/" user-emacs-directory) t)))
+
+
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name "backups/" user-emacs-directory))))
+
 (use-package company
   :ensure t
   :init
