@@ -74,3 +74,7 @@ alias ls="eza --icons"
 alias cat=bat
 alias gs="git stash && git switch main"
 alias emacs="emacs -nw"
+
+findtext() {
+    grep -rnw "." -e "$1"
+}
