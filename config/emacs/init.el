@@ -67,7 +67,10 @@
   (set-terminal-parameter nil 'background-mode 'light)
   (load-theme 'catppuccin t))
 
-;; Example configuration for Consult
+(use-package vertico
+  :init
+  (vertico-mode 1))
+
 (use-package consult
   ;; Replace bindings. Lazily loaded by `use-package'.
   :bind (;; C-c bindings in `mode-specific-map'
