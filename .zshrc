@@ -70,7 +70,7 @@ if command -v zellij &> /dev/null; then
     eval "$(zellij setup --generate-auto-start zsh)"
 fi
 
-alias ls="eza --icons"
+alias ls="eza --icons always"
 alias cat=bat
 alias gs="git stash && git switch main"
 alias emacs="emacs -nw"
