@@ -9,6 +9,9 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
 ;; Bootstrap use-package if not already installed
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
