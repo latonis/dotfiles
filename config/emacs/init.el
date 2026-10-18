@@ -20,12 +20,11 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; Directory settings for backups and auto-saves
-(setq auto-save-file-name-transforms
-      `((".*" ,(expand-file-name "auto-save/" user-emacs-directory) t)))
+;; Disable backup files (files ending in ~)
+(setq make-backup-files nil)
 
-(setq backup-directory-alist
-      `(("." . ,(expand-file-name "backups/" user-emacs-directory))))
+;; Disable auto-save files (files starting and ending with #)
+(setq auto-save-default nil)
 
 ;; Completion (Company)
 (use-package company
@@ -76,6 +75,12 @@
 (use-package vertico
   :init
   (vertico-mode 1))
+
+(use-package orderless
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles partial-completion)))))
 
 (use-package consult
   ;; Replace bindings. Lazily loaded by `use-package'.
@@ -193,3 +198,33 @@
  (add-hook 'minibuffer-setup-hook #'my-disable-company-in-minibuffer)
 
  (setq ns-alternate-modifier 'meta)
+
+ ;; Treemacs File Sidebar
+ (use-package treemacs
+   :ensure t
+   :defer t
+   :bind
+   (:map global-map
+         ("M-0"       . treemacs-select-window)
+         ("C-x t 1"   . treemacs-delete-other-windows)
+         ("C-x t t"   . treemacs)
+         ("C-x t d"   . treemacs-select-directory)
+         ("C-x t B"   . treemacs-bookmark)
+         ("C-x t C-t" . treemacs-find-file))
+   :config
+   (setq treemacs-width 30
+         treemacs-hide-dot-git-directory t
+         treemacs-show-hidden-files t
+         treemacs-sorting 'alphabetic-asc)
+ 
+   (treemacs-follow-mode t)
+   (treemacs-filewatch-mode t)
+   (treemacs-fringe-indicator-mode 'always)
+   (treemacs-git-mode 'simple)
+   (treemacs-hide-gitignored-files-mode t)
+   (treemacs-start-on-boot))
+
+ ; Optional: Pretty icons inside Dired buffers
+ (use-package treemacs-icons-dired
+   :hook (dired-mode . treemacs-icons-dired-enable-once)
+   :ensure t)
