@@ -4,7 +4,7 @@
 
 keybinds clear-defaults=true {
     locked {
-        bind "Ctrl y" { SwitchToMode "normal"; }
+        bind "Ctrl Shift y" { SwitchToMode "normal"; }
     }
     pane {
         bind "left" { MoveFocus "left"; }
